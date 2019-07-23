@@ -1,0 +1,4 @@
+#ignore folder with auto-saves
+auto-save-list/
+#ignore all auto-saves
+*~
