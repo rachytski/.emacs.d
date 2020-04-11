@@ -17,12 +17,15 @@
       `((".*" "~/.emacs.d/.autosaves/" t)))
 
 (setq-default
- c-default-style "bsd"
- c-basic-offset 2
-)
+  c-default-style "bsd"
+  c-basic-offset 2
+  )
+; tab width is 2 spaces
 (setq-default tab-width 2)
-(setq-default indent-tabs-mode t)
+; indenting with spaces
+(setq-default indent-tabs-mode nil)
 (normal-erase-is-backspace-mode 1)
+; C-h is faster than backspace
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-?") 'help-command)
 
@@ -39,6 +42,7 @@
  '(package-selected-packages (quote (scad-preview scad-mode)))
  '(scad-command "c:\\Tools\\OpenSCAD\\openscad.exe")
  '(scad-preview-image-size (quote (1600 . 1800))))
+ '(inhibit-startup-screen t)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
