@@ -1,3 +1,21 @@
+;;; package --- SIR .emacs settings
+;;; Commentary: 
+;;; Code:
+
+(unless (file-exists-p "~/.emacs.d/.backups/") (make-directory "~/.emacs.d/.backups/") )
+(unless (file-exists-p "~/.emacs.d/.autosaves/") (make-directory "~/.emacs.d/.autosaves/") )
+
+; storing all backups in a separate dir
+(setq backup-by-copying t ; copy, don't symlink
+      backup-directory-alist `(("." . "~/.emacs.d/.backups/"))
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+; storing all autosaves in a separate dir
+(setq auto-save-file-name-transforms
+      `((".*" "~/.emacs.d/.autosaves/" t)))
+
 (setq-default
  c-default-style "bsd"
  c-basic-offset 2

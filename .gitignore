@@ -1,4 +1,9 @@
 #ignore folder with auto-saves
 auto-save-list/
-#ignore all auto-saves
-*~
+#ignore all autosaves
+.autosaves
+#ignoring all backups
+.backups
+#ignoring locally downloaded elpa packages
+elpa
+elpa/*
