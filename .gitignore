@@ -4,6 +4,3 @@ auto-save-list/
 .autosaves
 #ignoring all backups
 .backups
-#ignoring locally downloaded elpa packages
-elpa
-elpa/*
