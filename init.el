@@ -34,15 +34,35 @@
 (setq package-check-signature nil)
 (package-initialize)
 
+; autocompletion support through "company" package
+(require `company)
+; global shortcuts
+(global-set-key (kbd "C-/") 'company-complete-common-or-cycle)
+
+; remapping non-obvious 'company' choice of next/prev symbol in completion window
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous))
+
+; LLVM clang.exe path to support C++ autocompletion
+(setq company-clang-executable "C:\\Tools\\LLVM\\bin\\clang.exe")
+
+; activate 'company' mode after initialization
+(add-hook `after-init-hook `global-company-mode)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (scad-preview scad-mode)))
  '(scad-command "c:\\Tools\\OpenSCAD\\openscad.exe")
  '(scad-preview-image-size (quote (1600 . 1800))))
  '(inhibit-startup-screen t)
+ '(package-selected-packages
+	 (quote
+		(company company-clang flycheck flycheck-irony)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
