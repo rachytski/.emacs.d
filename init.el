@@ -2,6 +2,16 @@
 ;;; Commentary: 
 ;;; Code:
 
+(setq clang-full-path "C:\\Tools\\LLVM\\bin\\clang.exe")
+(setq scad-full-path "C:\\Tools\\OpenSCAD\\openscad.exe")
+
+; Home directory use is prefferable, unless:
+; 1. You're on Windows
+; 2. using native Emacs build,
+; 3. and your username contains non-ASCII symbols.
+; (which is BTW usefull for debugging Unicode support here and there)
+(setq elpa-personal-path "F:\\Projects\\elpa-personal")
+
 (unless (file-exists-p "~/.emacs.d/.backups/") (make-directory "~/.emacs.d/.backups/") )
 (unless (file-exists-p "~/.emacs.d/.autosaves/") (make-directory "~/.emacs.d/.autosaves/") )
 
@@ -16,7 +26,7 @@
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs.d/.autosaves/" t)))
 
-(setq-default
+(setq-default 
   c-default-style "bsd"
   c-basic-offset 2
   )
@@ -32,6 +42,7 @@
 (require `package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (setq package-check-signature nil)
+(setq package-user-dir elpa-personal-path)
 (package-initialize)
 
 ; autocompletion support through "company" package
@@ -47,10 +58,12 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 ; LLVM clang.exe path to support C++ autocompletion
-(setq company-clang-executable "C:\\Tools\\LLVM\\bin\\clang.exe")
+(setq company-clang-executable clang-full-path)
 
 ; activate 'company' mode after initialization
 (add-hook `after-init-hook `global-company-mode)
+
+(add-to-list 'company-backends 'company-jedi)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -64,6 +77,8 @@
  '(scad-command "C:\\Tools\\OpenSCAD\\openscad.exe")
  '(scad-preview-image-size (quote (1600 . 1800)))
 )
+ '(scad-command scad-full-path)
+ '(scad-preview-image-size (quote (1600 . 1800))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
