@@ -62,6 +62,7 @@
 
 ; LLVM clang.exe path to support C++ autocompletion
 (setq company-clang-executable clang-full-path)
+(setq company-idle-delay 0)
 
 ; activate 'company' mode after initialization
 (add-hook `after-init-hook `global-company-mode)
