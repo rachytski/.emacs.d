@@ -45,6 +45,9 @@
 (setq package-user-dir elpa-personal-path)
 (package-initialize)
 
+; zygospore package is a lifesaver!
+(global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
+
 ; autocompletion support through "company" package
 (require `company)
 ; global shortcuts
@@ -72,11 +75,8 @@
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(package-selected-packages
-	 (quote
-		(company company-clang flycheck flycheck-irony scad-preview scad-mode)))
- '(scad-command "C:\\Tools\\OpenSCAD\\openscad.exe")
- '(scad-preview-image-size (quote (1600 . 1800)))
-)
+   (quote
+    (zygospore use-package company jedi company-jedi scad-preview scad-mode)))
  '(scad-command scad-full-path)
  '(scad-preview-image-size (quote (1600 . 1800))))
 
