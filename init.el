@@ -53,6 +53,22 @@
 (setq company-clang-executable clang-full-path)
 (setq company-idle-delay 0)
 
+(use-package irony
+  :ensure t
+  :config
+  (use-package company-irony
+    :ensure t
+    :config
+    (add-to-list 'company-backends 'company-irony))
+  (add-hook 'c++-mode-hook `irony-mode)
+  (add-hook 'c-mode-hook `irony-mode)
+  (defun my-irony-mode-hook ()
+    (define-key irony-mode-map[remap completion-at-point] `irony-completion-at-point-async)
+    (define-key irony-mode-map[remap complete-symbol] `irony-completion-at-point-async))
+  (add-hook `irony-mode-hook `my-irony-mode-hook)
+  (add-hook `irony-mode-hook `irony-cdb-autosetup-compile-options)
+)
+
 (use-package company
   :ensure t
   :init
@@ -66,10 +82,21 @@
   (unbind-key "M-n" company-active-map)
   (unbind-key "M-p" company-active-map)
 )
+
+(require 'irony)
+;; irony package settings
+;; Windows performance tweaks
+;; from https://github.com/Sarcasm/irony-mode
+(when (boundp 'w32-pipe-read-delay)
+  (setq w32-pipe-read-delay 0))
+;; Set the buffer size to 64K on Windows (from the original 4K)
+(when (boundp 'w32-pipe-buffer-size)
+  (setq irony-server-w32-pipe-buffer-size (* 64 1024)))
+
 ; activate 'company' mode after initialization
 (add-hook `after-init-hook `global-company-mode)
 
-(add-to-list 'company-backends 'company-jedi)
+(add-to-list 'company-backends 'company-jedi 'company-irony)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -78,9 +105,13 @@
  ;; If there is more than one, they won't work right.
  '(cua-mode t nil (cua-base))
  '(inhibit-startup-screen t)
+ '(irony-extra-cmake-args
+   (quote
+    ("-G" "Visual Studio 14 2015 Win64" "-DCMAKE_PREFIX_PATH=c:/Compilers/LLVM-9.0.0" "-DCLANG_RESOURCE_DIR=c:/Compilers/LLVM-9.0.0/lib/clang/9.0.0")))
+ '(irony-server-install-prefix "F:\\Projects\\elpa-personal\\builds\\irony")
  '(package-selected-packages
    (quote
-    (zygospore use-package company jedi company-jedi scad-preview scad-mode)))
+    (company-irony zygospore use-package company jedi company-jedi scad-preview scad-mode)))
  '(scad-command scad-full-path)
  '(scad-preview-image-size (quote (1600 . 1800))))
 
