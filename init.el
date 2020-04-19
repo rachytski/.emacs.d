@@ -2,11 +2,12 @@
 ;;; Commentary: 
 ;;; Code:
 
-(setq clang-full-path "C:\\Tools\\LLVM\\bin\\clang.exe")
+(setq clang-full-path "C:\\Compilers\\LLVM-9.0.0\\bin\\clang.exe")
 (setq scad-full-path "C:\\Tools\\OpenSCAD\\openscad.exe")
 
-; Home directory use is prefferable, unless:
-; 1. You're on Windows
+; Here is where all the installed packages go.
+; For this task home-based directory is prefferable, unless:
+; 1. you're on Windows
 ; 2. using native Emacs build,
 ; 3. and your username contains non-ASCII symbols.
 ; (which is BTW usefull for debugging Unicode support here and there)
@@ -48,22 +49,23 @@
 ; zygospore package is a lifesaver!
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
 
-; autocompletion support through "company" package
-(require `company)
-; global shortcuts
-(global-set-key (kbd "C-/") 'company-complete-common-or-cycle)
-
-; remapping non-obvious 'company' choice of next/prev symbol in completion window
-(with-eval-after-load 'company
-  (define-key company-active-map (kbd "M-n") nil)
-  (define-key company-active-map (kbd "M-p") nil)
-  (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous))
-
 ; LLVM clang.exe path to support C++ autocompletion
 (setq company-clang-executable clang-full-path)
 (setq company-idle-delay 0)
 
+(use-package company
+  :ensure t
+  :init
+  (global-company-mode)
+  :bind (("C-/" . company-complete-common-or-cycle)
+         :map company-active-map
+         ("C-n" . company-select-next)
+         ("C-p" . company-select-previous)
+         ("C-h" . delete-backward-char))
+  :config
+  (unbind-key "M-n" company-active-map)
+  (unbind-key "M-p" company-active-map)
+)
 ; activate 'company' mode after initialization
 (add-hook `after-init-hook `global-company-mode)
 
