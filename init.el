@@ -2,7 +2,6 @@
 ;;; Commentary: 
 ;;; Code:
 
-(setq clang-full-path "C:\\Compilers\\LLVM-9.0.0\\bin\\clang.exe")
 (setq scad-full-path "C:\\Tools\\OpenSCAD\\openscad.exe")
 
 ; Here is where all the installed packages go.
@@ -49,8 +48,6 @@
 ; zygospore package is a lifesaver!
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
 
-; LLVM clang.exe path to support C++ autocompletion
-(setq company-clang-executable clang-full-path)
 (setq company-idle-delay 0)
 
 (use-package irony
@@ -107,7 +104,8 @@
  '(inhibit-startup-screen t)
  '(irony-extra-cmake-args
    (quote
-    ("-G" "Visual Studio 14 2015 Win64" "-DCMAKE_PREFIX_PATH=c:/Compilers/LLVM-9.0.0" "-DCLANG_RESOURCE_DIR=c:/Compilers/LLVM-9.0.0/lib/clang/9.0.0")))
+     ("-G" "Visual Studio 16 2019")
+     ))
  '(irony-server-install-prefix "F:\\Projects\\elpa-personal\\builds\\irony")
  '(package-selected-packages
    (quote
