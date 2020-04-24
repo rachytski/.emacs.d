@@ -27,6 +27,7 @@
 ;(scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(show-paren-mode t)
 
 ; zygospore package is a lifesaver!
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
