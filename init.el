@@ -16,3 +16,4 @@
 (load-user-file "openscad.el")
 (load-user-file "c++.el")
 (load-user-file "python.el")
+(load-user-file "custom.el")
