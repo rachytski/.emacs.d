@@ -4,3 +4,5 @@ auto-save-list/
 .autosaves
 #ignoring all backups
 .backups
+#ignoring platform-specific config, see platform.example.el for details
+platform.el
