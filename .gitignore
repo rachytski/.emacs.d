@@ -6,3 +6,5 @@ auto-save-list/
 .backups
 #ignoring platform-specific config, see platform.example.el for details
 platform.el
+#ignoring elpa packages directory
+elpa/
