@@ -40,5 +40,4 @@
 (when (boundp 'w32-pipe-buffer-size)
   (setq irony-server-w32-pipe-buffer-size (* 64 1024)))
 
-(setq irony-extra-cmake-args (quote ("-G" "Visual Studio 16 2019")))
 (setq irony-server-install-prefix (expand-file-name "builds\\irony" elpa-personal-path))
