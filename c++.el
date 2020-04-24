@@ -4,6 +4,7 @@
   :ensure t
   :init
   (global-company-mode)
+  (setq company-idle-delay 0)
   :bind (("C-/" . company-complete-common-or-cycle)
          :map company-active-map
          ("C-n" . company-select-next)
