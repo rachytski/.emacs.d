@@ -12,6 +12,7 @@
       
 (load-user-file "platform.el")
 (load-user-file "packages.el")
+(load-user-file "colors.el")
 (load-user-file "general.el")
 (load-user-file "openscad.el")
 (load-user-file "c++.el")
