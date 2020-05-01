@@ -13,6 +13,7 @@
 (setq custom-file (expand-file-name "custom.el" user-init-dir))
       
 (load-user-file "platform.el")
+(load-user-file "keybindings.el")
 (load-user-file "packages.el")
 (load-user-file "colors.el")
 (load-user-file "general.el")
