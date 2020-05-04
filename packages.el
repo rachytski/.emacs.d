@@ -8,8 +8,6 @@
 
 (defvar my-selected-packages '(solarized-theme
                                use-package                               
-                               company                               
-                               company-irony
                                jedi
                                company-jedi
                                scad-preview

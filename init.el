@@ -19,6 +19,7 @@
 (load-user-file "colors.el")
 (load-user-file "general.el")
 (load-user-file "openscad.el")
-(load-user-file "c++.el")
+(load-user-file "completion-base.el")
+;(load-user-file "c++-irony.el")
 (load-user-file "python.el")
 (load-user-file "custom.el")
