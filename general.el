@@ -27,10 +27,6 @@
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs.d/.autosaves/" t)))
 
-; tab width is 2 spaces
-(setq-default tab-width 2)
-; indenting with spaces
-(setq-default indent-tabs-mode nil)
 (normal-erase-is-backspace-mode 1)
 ; C-h adds less wrist strain than backspace.
 (global-set-key (kbd "C-h") 'delete-backward-char)
