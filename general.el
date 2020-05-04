@@ -1,3 +1,6 @@
+(use-package exec-path-from-shell
+  :ensure t)
+
 (unless (file-exists-p "~/.emacs.d/.backups/") (make-directory "~/.emacs.d/.backups/") )
 (unless (file-exists-p "~/.emacs.d/.autosaves/") (make-directory "~/.emacs.d/.autosaves/") )
 
