@@ -30,4 +30,7 @@
 (show-paren-mode t)
 
 ; zygospore package is a lifesaver!
-(global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
+(use-package zygospore
+  :ensure t
+  :bind(("C-x 1" . 'zygospore-toggle-delete-other-windows))
+  )

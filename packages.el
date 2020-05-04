@@ -8,7 +8,6 @@
 
 (defvar my-selected-packages '(solarized-theme
                                use-package                               
-                               zygospore                               
                                company                               
                                company-irony
                                jedi
