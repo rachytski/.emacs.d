@@ -13,6 +13,12 @@
   :bind(("<C-tab>" . buffer-expose-no-stars))
   )
 
+;; Shows completion for the currently entered partial key
+;; https://github.com/justbur/emacs-which-key
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+
 (unless (file-exists-p "~/.emacs.d/.backups/") (make-directory "~/.emacs.d/.backups/") )
 (unless (file-exists-p "~/.emacs.d/.autosaves/") (make-directory "~/.emacs.d/.autosaves/") )
 
