@@ -2,6 +2,8 @@
 ;; in more than 16-colors palette. the following
 ;; should help on *NIX systems 
 ;; export TERM=xterm-256color
+(use-package solarized-theme :ensure t)
+
 (load-theme `solarized-light t t)
 
 ;; https://github.com/belluzj/fantasque-sans
