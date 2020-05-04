@@ -1,6 +1,11 @@
 (use-package exec-path-from-shell
   :ensure t)
 
+(use-package buffer-expose
+  :ensure t
+  :bind(("<C-tab>" . buffer-expose-no-stars))
+)
+
 (unless (file-exists-p "~/.emacs.d/.backups/") (make-directory "~/.emacs.d/.backups/") )
 (unless (file-exists-p "~/.emacs.d/.autosaves/") (make-directory "~/.emacs.d/.autosaves/") )
 
