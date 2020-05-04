@@ -1,6 +1,6 @@
 (use-package ccls
   :ensure t
-  :init(setq ccls-executable "f:/Projects/ccls/build/Release/MinSizeRel/ccls.exe")
+  :init(setq ccls-executable (expand-file-name "builds/ccls" elpa-personal-path))
   :hook((c-mode c++-mode) . (lambda () (require `ccls) (lsp))))
 
 
