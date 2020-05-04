@@ -3,6 +3,10 @@
 (use-package exec-path-from-shell
   :ensure t)
 
+;; Package necessary for both magit and lsp-mode later on
+(use-package markdown-mode
+  :ensure t)
+
 ;; Allows mission-control-like switching between emacs buffers
 ;; Initiate with Ctrl-Tab, continue switching with Tab.
 ;; Note, that Ctrl-I is the same as Tab, so switching is
