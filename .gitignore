@@ -8,3 +8,7 @@ auto-save-list/
 platform.el
 #ignoring elpa packages directory
 elpa/
+#ignoring eshell history files
+eshell/
+#ignoring temporary files in transient folder
+transient/
