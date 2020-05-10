@@ -1,4 +1,4 @@
-(require 'cl)
+(require 'cl-lib)
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (setq package-check-signature nil)
@@ -9,7 +9,7 @@
   "crucial packages to run the rest of configuration")
 
 (defun personal-packages-installed-p ()
-  (loop for pkg in personal-selected-packages
+  (cl-loop for pkg in personal-selected-packages
         when (not (package-installed-p pkg)) do (return nil)
         finally (return t)))
 
