@@ -13,6 +13,13 @@
   :bind(("<C-tab>" . buffer-expose-no-stars))
   )
 
+;; Interface to 'The Silver Searcher'
+;; https://github.com/ggreer/the_silver_searcher
+;; Windows: install ag using chocolatey package manager
+;; Other: use native package managers
+(use-package ag
+  :ensure t)
+
 ;; Shows completion for the currently entered partial key
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
