@@ -12,3 +12,5 @@ elpa/
 eshell/
 #ignoring temporary files in transient folder
 transient/
+*.eld
+*.cache
