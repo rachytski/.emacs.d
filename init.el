@@ -27,4 +27,5 @@
 (load-user-file "c++-ccls.el")
 ;(load-user-file "c++-irony.el")
 (load-user-file "python.el")
+(load-user-file "arduino.el")
 (load-user-file "custom.el")
