@@ -1,10 +1,6 @@
 (use-package irony
   :ensure t
   :config
-  (use-package company-irony
-    :ensure t
-    :config
-    (add-to-list 'company-backends 'company-irony))
   (add-hook 'c++-mode-hook `irony-mode)
   (add-hook 'c-mode-hook `irony-mode)
   (defun my-irony-mode-hook ()
@@ -13,6 +9,12 @@
   (add-hook `irony-mode-hook `my-irony-mode-hook)
   (add-hook `irony-mode-hook `irony-cdb-autosetup-compile-options)
 )
+
+(use-package company-irony
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-irony))
+
 
 (require 'irony)
 ;; irony package settings
