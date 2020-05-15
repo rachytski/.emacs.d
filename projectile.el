@@ -3,9 +3,8 @@
 
 (use-package projectile
   :ensure t
+  :bind (("C-," . 'projectile-find-other-file)
+         ("C-x p" . 'projectile-command-map))
   :config
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-,") 'projectile-find-other-file)
-  (setq projectile-completion-system 'ivy)
-  (projectile-mode +1))
+    (setq projectile-completion-system 'ivy)
+    (projectile-mode +1))
