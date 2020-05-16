@@ -14,3 +14,5 @@ eshell/
 transient/
 *.eld
 *.cache
+#ignoring temporary files for lsp-mode
+.lsp-session*
