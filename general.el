@@ -8,10 +8,10 @@
 ;; Note, that Ctrl-I is the same as Tab, so switching is
 ;; eeringly similar to Visual Studio tab switching behaviour
 ;; (which is the goal btw, as its super convenient)
-(use-package buffer-expose
-  :ensure t
-  :bind(("<C-tab>" . buffer-expose-no-stars))
-  )
+;(use-package buffer-expose
+;  :ensure t
+;  :bind(("<C-tab>" . buffer-expose-no-stars))
+;  )
 
 ;; Interface to 'The Silver Searcher'
 ;; https://github.com/ggreer/the_silver_searcher
