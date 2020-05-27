@@ -20,6 +20,7 @@
 (load-user-file "magit.el")
 (load-user-file "colors.el")
 (load-user-file "general.el")
+(load-user-file "react-native.el")
 (load-user-file "openscad.el")
 (load-user-file "indentation.el")
 (load-user-file "company.el")
