@@ -1,3 +1,7 @@
+(use-package add-node-modules-path
+  :ensure t
+  :hook (web-mode . 'add-node-modules-path))
+
 (defun rachytski/activate-tide-mode ()
   "using hl-identifier mode for js buffers"
   (when (and (stringp buffer-file-name)
