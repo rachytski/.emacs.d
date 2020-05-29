@@ -1,3 +1,6 @@
+(use-package nvm
+  :ensure t)
+
 (use-package add-node-modules-path
   :ensure t
   :hook (web-mode . 'add-node-modules-path))
