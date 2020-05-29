@@ -26,6 +26,7 @@
 (load-user-file "company.el")
 (load-user-file "lsp.el")
 (load-user-file "ccls.el")
+(load-user-file "go.el")
 ;(load-user-file "c++-irony.el")
 (load-user-file "python.el")
 (load-user-file "arduino.el")

@@ -10,6 +10,7 @@
 (use-package lsp-mode
   :ensure t
   :hook((c++-mode . lsp)
+        (go-mode . lsp)
         (lsp-mode . lsp-enable-which-key-integration))
   :init(setq gc-cons-threshold 100000000
              read-process-output-max (* 1024 1024)
