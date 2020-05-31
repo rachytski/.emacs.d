@@ -1,6 +1,10 @@
-;; to use company-jedi for autocompletion the following packages should
-;; be installed and available on PATH
-;;  * pip
-;;  * jedi
-;;  * virtualenv
-(add-to-list 'company-backends 'company-jedi)
+;(use-package lsp-python-ms
+;  :ensure t
+;  :init
+;  (setq lsp-python-ms-auto-install-server t)
+;  :hook
+;  (python-mode . (lambda ()
+;                   (require 'lsp-python-ms)
+;                   (lsp))))
+
+
