@@ -1,6 +1,3 @@
-(use-package ivy
-  :ensure t)
-
 (use-package projectile
   :ensure t
   :bind (("C-," . 'projectile-find-other-file)
