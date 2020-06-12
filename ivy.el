@@ -14,8 +14,7 @@
         ivy-count-format ""
         ivy-initial-inputs-alist nil
         ivy-display-style 'fancy
-        ivy-re-builders-alist '((swiper . ivy--regex-plus)
-                                (t . ivy--regex-fuzzy))))
+        ivy-re-builders-alist '((t . ivy--regex-plus))))
 
 (use-package swiper
   :ensure t
