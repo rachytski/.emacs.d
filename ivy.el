@@ -5,8 +5,8 @@
 
 (use-package ivy
   :ensure t
-  :diminish (ivy-mode . "")
-  :bind(:map ivy-mode-map ("C-'" . ivy-avy))
+  :bind(:map ivy-minibuffer-map ("C-m" . 'ivy-alt-done)
+                                ("C-M-m" . 'ivy-immediate-done))
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
