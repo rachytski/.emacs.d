@@ -15,7 +15,6 @@
 (load-user-file "platform.el")
 (load-user-file "keybindings.el")
 (load-user-file "packages.el")
-(load-user-file "helm.el")
 (load-user-file "projectile.el")
 (load-user-file "magit.el")
 (load-user-file "colors.el")
