@@ -29,8 +29,9 @@
   :ensure t
   :commands lsp-ui-mode)
 
-(use-package company-lsp
-  :ensure t
-  :commands company-lsp)
+; commented out at it add a huge delay to autocomplete
+;(use-package company-lsp
+;  :ensure t
+;  :commands company-lsp)
 
 
