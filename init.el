@@ -1,5 +1,8 @@
 ;(package-initialize)
 
+(add-to-list 'load-path "~/.emacs.d/elpa-mirror")
+(require 'elpa-mirror)
+
 (defconst user-init-dir
   (cond ((boundp 'user-emacs-directory)user-emacs-directory)
         ((boundp 'user-init-directory)user-init-directory)
