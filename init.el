@@ -1,5 +1,3 @@
-;(package-initialize)
-
 (add-to-list 'load-path "~/.emacs.d/elpa-mirror")
 (require 'elpa-mirror)
 
@@ -18,11 +16,11 @@
 (load-user-file "platform.el")
 (load-user-file "keybindings.el")
 (load-user-file "packages.el")
+(load-user-file "general.el")
 (load-user-file "ivy.el")
 (load-user-file "projectile.el")
 (load-user-file "magit.el")
 (load-user-file "colors.el")
-(load-user-file "general.el")
 (load-user-file "react-native.el")
 (load-user-file "openscad.el")
 (load-user-file "indentation.el")
@@ -31,8 +29,7 @@
 (load-user-file "ccls.el")
 (load-user-file "cmake.el")
 (load-user-file "go.el")
-;(load-user-file "c++-irony.el")
-;(load-user-file "python.el")
+(load-user-file "python.el")
 (load-user-file "arduino.el")
 (load-user-file "platformio.el")
 (load-user-file "custom.el")

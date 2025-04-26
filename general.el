@@ -40,7 +40,7 @@
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs.d/.autosaves/" t)))
 
-(normal-erase-is-backspace-mode 1)
+(setq normal-erase-is-backspace-mode 1)
 ; C-h adds less wrist strain than backspace.
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-?") 'help-command)

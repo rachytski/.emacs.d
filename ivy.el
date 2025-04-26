@@ -17,6 +17,7 @@
         ivy-display-style 'fancy
         ivy-re-builders-alist '((t . ivy--regex-plus))))
 
+; enhances swiper for C-f command, also used for projectile
 (use-package swiper
   :ensure t
   :bind("C-s" . 'swiper))
