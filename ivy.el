@@ -1,8 +1,3 @@
-(use-package avy
-  :ensure t
-  :bind(("C-;" . 'avy-goto-char)
-        ("C-:" . 'avy-goto-char-2)))
-
 (use-package ivy
   :ensure t
   :bind(:map ivy-minibuffer-map ("C-m" . 'ivy-alt-done)
@@ -16,6 +11,12 @@
         ivy-initial-inputs-alist nil
         ivy-display-style 'fancy
         ivy-re-builders-alist '((t . ivy--regex-plus))))
+
+(use-package counsel
+  :ensure t
+  :bind(("C-x C-a" . 'counsel-ag)
+        )
+  )
 
 ; enhances swiper for C-f command, also used for projectile
 (use-package swiper
