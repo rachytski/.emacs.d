@@ -14,8 +14,8 @@
 
 (use-package counsel
   :ensure t
-  :bind(("C-x C-a" . 'counsel-ag)
-        )
+  :bind(("C-x C-a" . 'counsel-rg) ;search in all files from current folder onwards
+	)
   )
 
 ; enhances swiper for C-f command, also used for projectile
