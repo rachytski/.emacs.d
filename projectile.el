@@ -5,8 +5,10 @@
          ("M-m" . 'projectile-find-file))
   :config
   (projectile-mode +1)
+  (projectile-update-project-type 'cmake :precedence 'high)
   :custom
   (projectile-completion-system 'ivy)
+  (projectile-enable-cmake-presets t)
   (projectile-dirconfig-comment-prefix "#")
   (nameframe-projectile-mode t)
   )
