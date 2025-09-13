@@ -18,8 +18,10 @@
   :config
   (global-unset-key (kbd "C-x d"))
   (print "Configuring DAP-MODE")
-  ;;print debugging output to *Messages* buffer, but not to mini-buffer
-  ;;(setq dap-print-io t dap-inhibit-io t)
+  ;; Unlimited number of messages in *Messages* buffer
+  ;; (setq message-log-max t)
+  ;; Print debugging output to *Messages* buffer, but not to mini-buffer
+  ;; (setq dap-print-io t dap-inhibit-io t)
   (setq dap-auto-configure-features '(sessions locals breakpoints controls expressions))
   (setq dap-debug-compilation-keep t)
   (setq dap-auto-show-output t)

@@ -10,9 +10,6 @@
 
 (setq custom-file (expand-file-name "custom.el" user-init-dir))
 
-;; Unlimited number of messages in *Messages* buffer
-;;(setq message-log-max t)
-
 (load-user-file "platform.el")
 (load-user-file "caches.el")
 (load-user-file "packages.el")
