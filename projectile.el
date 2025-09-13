@@ -65,3 +65,12 @@
   )
 
 
+(use-package counsel-projectile
+  :ensure t
+  :requires
+  (projectile counsel))
+
+(use-package projectile-codesearch
+  :ensure t
+  :requires
+  (projectile))
