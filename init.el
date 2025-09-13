@@ -9,7 +9,10 @@
   (load-file (expand-file-name file user-init-dir)))
 
 (setq custom-file (expand-file-name "custom.el" user-init-dir))
-      
+
+;; Unlimited number of messages in *Messages* buffer
+;;(setq message-log-max t)
+
 (load-user-file "platform.el")
 (load-user-file "packages.el")
 (load-user-file "keybindings.el")
@@ -22,6 +25,8 @@
 (load-user-file "ivy.el")
 (load-user-file "projectile.el")
 (load-user-file "treemacs.el")
+(load-user-file "ai-tools.el")
+(load-user-file "ai.el")
 (load-user-file "magit.el")
 (load-user-file "react-native.el")
 (load-user-file "openscad.el")
