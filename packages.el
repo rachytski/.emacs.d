@@ -18,8 +18,8 @@
 (add-to-list 'package-archives '("cselpa" . "https://elpa.thecybershadow.net/packages/"))
 
 (unless (boundp 'do-update-local-mirror)
-  (setq package-archives '(("elpa-mirror" . (expand-file-name "elpa-cache/mirror" user-cache-dir))))
-)
+  (setq package-archives `(("elpa-mirror" . ,(expand-file-name "elpa-mirror/packages" user-init-dir))))
+  )
 
 (print "Enabled ELPA archives:")
 (print package-archives)
