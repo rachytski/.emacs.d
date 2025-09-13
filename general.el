@@ -59,3 +59,6 @@
   :ensure t
   :bind(("C-x 1" . 'zygospore-toggle-delete-other-windows))
   )
+
+; make compilation buffer to follow-scrolling output until error occures
+(setq compilation-scroll-output 'first-error)
