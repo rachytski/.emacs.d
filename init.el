@@ -11,10 +11,11 @@
 (setq custom-file (expand-file-name "custom.el" user-init-dir))
       
 (load-user-file "platform.el")
-(load-user-file "dired-sidebar.el")
-(load-user-file "keybindings.el")
 (load-user-file "packages.el")
+(load-user-file "keybindings.el")
+(load-user-file "eshell.el")
 (load-user-file "general.el")
+(load-user-file "layouts.el")
 (load-user-file "avy.el")
 (load-user-file "ag.el")
 (load-user-file "rg.el")

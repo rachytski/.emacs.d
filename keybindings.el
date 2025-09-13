@@ -10,10 +10,15 @@
   :ensure t
   :init (term-keys-mode t))
 
+;;;(global-set-key (kbd "C-M-n") 'scroll-up)
+;;;(global-set-key (kbd "C-M-p") 'scroll-down) 
+
 (global-set-key (kbd "M-n") 'scroll-up)
 (global-set-key (kbd "M-p") 'scroll-down)
 
 ;;(global-set-key (kbd "M-m") 'toggle-frame-maximized)
+
+;;(global-set-key (kbd "C-<tab>") `next-buffer)
 
 ; remove annoying behaviour of destroying windows layout on triple-ESC 
 (defadvice keyboard-escape-quit

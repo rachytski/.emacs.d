@@ -11,6 +11,22 @@
   (nameframe-projectile-mode t)
   )
 
+;; Better buffers switching
+;; Breaks on switching to some buffers like *Messages*,
+;; so filtering them out with regexp 
+(use-package nswbuff
+  :ensure t
+  :requires
+  (projectile)
+  :config
+  (global-set-key (kbd "C-<tab>") 'nswbuff-switch-to-next-buffer)
+  (global-set-key (kbd "C-M-<tab>") 'nswbuff-switch-to-previous-buffer)  
+  (setq nswbuff-display-intermediate-buffers t)
+  (setq nswbuff-buffer-list-function 'nswbuff-projectile-buffer-list)
+  :custom
+  (nswbuff-exclude-buffer-regexps '("^magit.*" "^ " "^\*.*\*").)
+  )
+
 (use-package persp-projectile
   :ensure t
   :requires
