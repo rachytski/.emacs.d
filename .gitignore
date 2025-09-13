@@ -1,18 +1,5 @@
-#ignore folder with auto-saves
-auto-save-list/
-#ignore all autosaves
-.autosaves
-#ignoring all backups
-.backups
 #ignoring platform-specific config, see platform.example.el for details
 platform.el
-#ignoring elpa packages directory
-elpa/
-#ignoring eshell history files
-eshell/
-#ignoring temporary files in transient folder
-transient/
 *.eld
-*.cache
 #ignoring temporary files for lsp-mode
 .lsp-session*

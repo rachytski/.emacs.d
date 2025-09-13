@@ -14,6 +14,7 @@
 ;;(setq message-log-max t)
 
 (load-user-file "platform.el")
+(load-user-file "caches.el")
 (load-user-file "packages.el")
 (load-user-file "keybindings.el")
 (load-user-file "eshell.el")

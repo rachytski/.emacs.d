@@ -38,6 +38,8 @@
 			   ))
 	      )
 	    )
+  :custom
+  (treemacs-persist-file (expand-file-name "treemacs-persist" user-cache-dir))
   )
 
 (use-package treemacs-projectile

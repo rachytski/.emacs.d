@@ -19,26 +19,6 @@
   :ensure t
   :config (which-key-mode))
 
-(defun ensure-directory (root &optional entry)
-  (let ((full-path (if entry (expand-file-name entry root) root)))
-    (unless (file-exists-p full-path) (make-directory full-path))
-    full-path))
-
-(ensure-directory user-cache-dir)
-(setq backups-dir (ensure-directory user-cache-dir ".backups"))
-(setq autosaves-dir (ensure-directory user-cache-dir ".autosaves"))
-
-; Storing all backups in a separate dir
-(setq backup-by-copying t ; copy, don't symlink
-      backup-directory-alist `(("." . backups-dir))
-      delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)
-; Storing all autosaves in a separate dir
-(setq auto-save-file-name-transforms
-      `((".*" ,autosaves-dir t)))
-
 (setq normal-erase-is-backspace-mode 1)
 ; C-h adds less wrist strain than backspace.
 (global-set-key (kbd "C-h") 'delete-backward-char)

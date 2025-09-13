@@ -39,6 +39,8 @@
   (setq dap-python-debugger 'debugpy)
   (require 'dap-python)
   (dap-auto-configure-mode)
+  :custom
+  (dap-breakpoints-file (user-cache-path ".dap-breakpoints"))
   )
 
 

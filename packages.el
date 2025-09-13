@@ -25,7 +25,6 @@
 (print package-archives)
 
 (setq package-check-signature nil)
-(setq package-user-dir (expand-file-name "elpa-cache/packages" user-cache-dir))
 (package-initialize)
 
 ;; do not auto-install anything else here as other
