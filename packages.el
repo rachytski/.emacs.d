@@ -18,14 +18,14 @@
 (add-to-list 'package-archives '("cselpa" . "https://elpa.thecybershadow.net/packages/"))
 
 (unless (boundp 'do-update-local-mirror)
-  (setq package-archives '(("elpa-mirror" . (expand-file-name "elpa-cache/mirror" user-init-dir))))
+  (setq package-archives '(("elpa-mirror" . (expand-file-name "elpa-cache/mirror" user-cache-dir))))
 )
 
 (print "Enabled ELPA archives:")
 (print package-archives)
 
 (setq package-check-signature nil)
-(setq package-user-dir (expand-file-name "elpa-cache/packages" user-init-dir))
+(setq package-user-dir (expand-file-name "elpa-cache/packages" user-cache-dir))
 (package-initialize)
 
 ;; do not auto-install anything else here as other
