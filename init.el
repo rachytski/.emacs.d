@@ -26,6 +26,7 @@
 (load-user-file "indentation.el")
 (load-user-file "company.el")
 (load-user-file "lsp.el")
+(load-user-file "documentation.el")
 (load-user-file "origami.el")
 (load-user-file "ccls.el")
 (load-user-file "cmake.el")
