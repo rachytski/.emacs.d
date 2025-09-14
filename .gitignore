@@ -3,3 +3,4 @@ platform.el
 *.eld
 #ignoring temporary files for lsp-mode
 .lsp-session*
+elpa-mirror
