@@ -1,11 +1,11 @@
 ; path to OpenSCAD executable for scad-mode and scad-preview-mode
-(setq scad-full-path "C:\\Tools\\OpenSCAD\\openscad.exe")
+(setq scad-full-path "YOUR_PATH_TO_OPENSCAD_EXECUTABLE")
 
 ; path to local folder which will contain all emacs caches
-(setq user-cache-dir "~/.emacs.d.cache")
-(setq user-os-name "MacOS")
-(setq user-shell "/bin/sh")
-(setq user-home-dir "/Users/sir")
+(setq user-cache-dir "YOUR_CACHE_DIR")
+(setq user-os-name "YOUR_OS")
+(setq user-shell "YOUR_PATH_TO_SHELL")
+(setq user-home-dir "YOUR_HOME_DIR")
 
 (setq gptel-ollama-api-key "YOUR_OLLAMA_KEY")
 (setq gptel-chatgpt-api-key "YOUR_CHATGPT_KEY")
