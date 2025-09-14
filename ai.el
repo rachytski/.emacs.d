@@ -2,7 +2,8 @@
   :ensure t
   :requires treemacs
   :bind (("C-x / /" . gptel)
-	 ("C-x / m" . gptel-menu)) ; make it hydra
+	 ("C-x / m" . gptel-menu)
+	 ("C-x RET" . gptel-send)) ; make it hydra
   :config
   (message "Configuing GPTEL")
   (require 'gptel-ollama)
