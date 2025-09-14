@@ -1,3 +1,0 @@
-[submodule "elpa-mirror"]
-	path = elpa-mirror
-	url = git@github.com:redguardtoo/elpa-mirror.git

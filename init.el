@@ -13,6 +13,7 @@
 (load-user-file "platform.el")
 (load-user-file "caches.el")
 (load-user-file "packages.el")
+(load-user-file "mirror.el")
 (load-user-file "keybindings.el")
 (load-user-file "eshell.el")
 (load-user-file "general.el")

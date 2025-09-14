@@ -33,7 +33,7 @@
 ; Custom prefix for auto-save-list 
 (setq auto-save-list-file-prefix (user-cache-path "auto-save-list"))
 
-(setq package-user-dir (user-cache-path "elpa"))
+(setq package-user-dir (user-cache-path "elpa-mirror"))
 
 (setq lsp-session-file (user-cache-path ".lsp-session-v1"))
 

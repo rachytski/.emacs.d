@@ -1,5 +1,5 @@
 #!/bin/sh
-rm -Rv ~/.cache ~/.emacs.d/elpa-mirror/packages
+rm -Rv ~/.cache ~/.emacs.d/elpa-mirror
 emacs --batch \
       -l ~/.emacs.d/setup-create-mirror.el \
       -l ~/.emacs.d/init.el \

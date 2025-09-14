@@ -11,14 +11,11 @@
 
 ;;(setq do-update-local-mirror t)
 
-(add-to-list 'load-path (expand-file-name "elpa-mirror" user-init-dir))
-(require 'elpa-mirror)
-
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("cselpa" . "https://elpa.thecybershadow.net/packages/"))
 
 (unless (boundp 'do-update-local-mirror)
-  (setq package-archives `(("elpa-mirror" . ,(expand-file-name "elpa-mirror/packages" user-init-dir))))
+  (setq package-archives `(("elpa-mirror" . ,(expand-file-name "elpa-mirror" user-init-dir))))
   )
 
 (print "Enabled ELPA archives:")
