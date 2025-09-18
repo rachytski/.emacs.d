@@ -13,8 +13,8 @@
 ;;;(global-set-key (kbd "C-M-n") 'scroll-up)
 ;;;(global-set-key (kbd "C-M-p") 'scroll-down) 
 
-(global-set-key (kbd "M-n") 'scroll-up)
-(global-set-key (kbd "M-p") 'scroll-down)
+(global-set-key (kbd "C-M-n") 'scroll-up)
+(global-set-key (kbd "C-M-p") 'scroll-down)
 
 ;;(global-set-key (kbd "M-m") 'toggle-frame-maximized)
 
