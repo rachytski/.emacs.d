@@ -23,7 +23,7 @@
 
 ; Storing all backups in a separate dir
 (setq backup-by-copying t ; copy, don't symlink
-      backup-directory-alist `(("." . backups-dir))
+      backup-directory-alist `(("." . ,backups-dir))
       delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2

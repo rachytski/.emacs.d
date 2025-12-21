@@ -41,6 +41,7 @@
   (dap-auto-configure-mode)
   :custom
   (dap-breakpoints-file (user-cache-path ".dap-breakpoints"))
+  (dap-ui-repl-histtory-dir `user-cache-dir)
   )
 
 
