@@ -11,10 +11,20 @@
 ;; c++   : will install clangd automatically
 ;; go    : see go.el
 
+(use-package cmake-mode
+  :ensure t
+  :mode("CMakeLists\\.txt\\'" "\\.cmake\\'")
+  :hook (cmake-mode . lsp-deferred))
+
 (use-package lsp-mode
   :ensure t
   :hook
-  (((java-mode c++-mode go-mode python-mode) . lsp-deferred)
+  (((java-mode
+     c++-mode
+     go-mode
+     python-mode
+     cmake-mode
+     ) . lsp-deferred)
    (lsp-mode . lsp-enable-which-key-integration))
   :bind (("C-." . lsp-find-definition)
 	 ("C-M-." . lsp-find-definition))

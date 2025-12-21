@@ -35,7 +35,6 @@
 (load-user-file "debugging.el")
 (load-user-file "documentation.el")
 (load-user-file "origami.el")
-(load-user-file "cmake.el")
 (load-user-file "go.el")
 (load-user-file "python.el")
 (load-user-file "arduino.el")
