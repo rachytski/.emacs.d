@@ -21,6 +21,7 @@
   :hook
   (((java-mode
      c++-mode
+     js-json-mode
      go-mode
      python-mode
      cmake-mode
@@ -35,7 +36,8 @@
 	read-process-output-max (* 1024 1024)
 	lsp-prefer-capf t
 	lsp-keymap-prefix "C-x l"
-	lsp-highlight-symbol-at-point t)
+	lsp-highlight-symbol-at-point t
+	js-indent-level 2)
   :custom
   (lsp-format-buffer-on-save t)
   )

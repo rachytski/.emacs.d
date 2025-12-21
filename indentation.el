@@ -15,4 +15,6 @@
   (fset 'c-indent-region 'clang-format-region) 
   )
 
+(setq tab-width 2)
+
 
