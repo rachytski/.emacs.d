@@ -36,6 +36,8 @@
 	lsp-prefer-capf t
 	lsp-keymap-prefix "C-x l"
 	lsp-highlight-symbol-at-point t)
+  :custom
+  (lsp-format-buffer-on-save t)
   )
 
 (use-package lsp-ui
