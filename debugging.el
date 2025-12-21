@@ -1,12 +1,3 @@
-(bind-keys* :prefix-map dap-mode-map
-	    :prefix "C-x d")
-
-(bind-keys  :map dap-mode-map
-	    ("d" . dap-debug)
-	    ("h" . dap-hydra)
-	    ("b b" . dap-breakpoint-toggle)
-	    ("b c" . dap-breakpoint-condition))
-
 (use-package dap-mode
   :ensure t
   :init
@@ -17,6 +8,13 @@
   (dap-terminated . (lambda (session) (setq lsp-auto-guess-root t)))
   :config
   (global-unset-key (kbd "C-x d"))
+  (bind-keys* :prefix-map dap-mode-map
+	      :prefix "C-x d")
+  (bind-keys  :map dap-mode-map
+	      ("d" . dap-debug)
+	      ("h" . dap-hydra)
+	      ("b b" . dap-breakpoint-toggle)
+	      ("b c" . dap-breakpoint-condition))
   (print "Configuring DAP-MODE")
   ;; Unlimited number of messages in *Messages* buffer
   ;; (setq message-log-max t)
