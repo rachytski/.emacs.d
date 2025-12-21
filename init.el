@@ -10,6 +10,7 @@
 
 (setq custom-file (expand-file-name "custom.el" user-init-dir))
 
+(load-user-file "init-debugging.el")
 (load-user-file "platform.el")
 (load-user-file "caches.el")
 (load-user-file "packages.el")
