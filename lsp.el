@@ -28,7 +28,8 @@
      ) . lsp-deferred)
    (lsp-mode . lsp-enable-which-key-integration))
   :bind (("C-." . lsp-find-definition)
-	 ("C-M-." . lsp-find-definition))
+	 ("C-M-." . lsp-find-definition)
+	 ("C-RET" . lsp-execute-code-action))
   :commands
   lsp
   :init 
@@ -39,6 +40,7 @@
 	lsp-highlight-symbol-at-point t
 	js-indent-level 2)
   :custom
+  (lsp-auto-execute-action nil)
   (lsp-format-buffer-on-save t)
   )
 
