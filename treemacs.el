@@ -6,7 +6,13 @@
 	   project-root))
   ))
 
-(defun hide-treemacs () (treemacs))
+(defun rachytski-hide-treemacs () (delete-window (treemacs-get-local-window)))
+
+(defun rachytski-show-single-project (project-root name)
+  (progn
+    (message "persp-switch-hook: making treemacs show project '%s' with root '%s'" name project-root)
+    (treemacs--show-single-project project-root name)))
+
 
 (use-package treemacs
   :ensure t
@@ -23,16 +29,13 @@
 	    )
   (setq perspectives-loaded nil)
   (add-hook 'persp-before-switch-hook
-	    (lambda () (if perspectives-loaded (hide-treemacs))))
+	    (lambda () (if perspectives-loaded (progn (message "persp-before-switch-hook: hiding treemacs")(rachytski-hide-treemacs)))))
   (add-hook 'persp-switch-hook
 	    (lambda () (let* ((name (persp-current-name))
 			      (project-root (rachytski-find-project-root name)))
 			 (if perspectives-loaded
 			     (if project-root
-				 (progn
-				   (message (format "persp-switch-hook: making treemacs show project '%s'" name))
-				   (treemacs--show-single-project project-root name)
-				   )
+				 (rachytski-show-single-project (expand-file-name project-root) name)
 			       (message (format "persp-switch-hook: no project root for '%s'" name)))
 			     (message "persp-switch-hook: inside perspectives loading code")
 			   ))
