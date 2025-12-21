@@ -38,7 +38,8 @@
 (use-package perspective
   :ensure t
   :custom
-  (persp-mode-prefix-key (kbd "C-x l"))
+  (persp-suppress-no-prefix-key-warning t)
+;  (persp-mode-prefix-key (kbd "C-x l"))
   (persp-state-default-file (expand-file-name ".perspectives" user-cache-dir))
   :requires
   persp-projectile
