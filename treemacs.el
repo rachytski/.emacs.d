@@ -27,6 +27,7 @@
 		(message "projectile-after-switch-project-hook"))
 	      )
 	    )
+  (treemacs-follow-mode)
   (setq perspectives-loaded nil)
   (add-hook 'persp-before-switch-hook
 	    (lambda () (if perspectives-loaded (progn (message "persp-before-switch-hook: hiding treemacs")(rachytski-hide-treemacs)))))
