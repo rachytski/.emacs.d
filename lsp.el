@@ -14,7 +14,10 @@
 (use-package cmake-mode
   :ensure t
   :mode("CMakeLists\\.txt\\'" "\\.cmake\\'")
-  :hook (cmake-mode . lsp-deferred))
+  )
+
+(use-package yasnippet
+  :ensure t)
 
 (use-package lsp-mode
   :ensure t
@@ -39,6 +42,7 @@
 	lsp-keymap-prefix "C-x l"
 	lsp-highlight-symbol-at-point t
 	js-indent-level 2)
+  (setq lsp-json-schemas '[(:fileMatch ["CMakePresets.json"] :url "https://cmake.org/cmake/help/latest/_downloads/3e2d73bff478d88a7de0de736ba5e361/schema.json")])
   :custom
   (lsp-auto-execute-action nil)
   (lsp-format-buffer-on-save t)
@@ -46,7 +50,9 @@
 
 (use-package lsp-ui
   :ensure t
-  :commands lsp-ui-mode)
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-doc-use-childframe nil))
 
 
 
