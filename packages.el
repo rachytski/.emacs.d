@@ -9,13 +9,20 @@
 (require 'cl-lib)
 (require 'package)
 
+(setq use-package-compute-statistics t)
+
 ;;(setq do-update-local-mirror t)
 
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("cselpa" . "https://elpa.thecybershadow.net/packages/"))
-
-(unless (boundp 'do-update-local-mirror)
-  (setq package-archives `(("elpa-mirror" . ,(expand-file-name "elpa-mirror" user-init-dir))))
+(if (boundp 'do-update-local-mirror)
+    (progn
+      (message "Using remote ELPA archives")
+      (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+      (add-to-list 'package-archives '("cselpa" . "https://elpa.thecybershadow.net/packages/"))
+      )
+    (progn
+      (message "Using local ELPA archives")
+      (setq package-archives `(("elpa-mirror" . ,(user-init-path "elpa-mirror"))))
+      )
   )
 
 (print "Enabled ELPA archives:")
