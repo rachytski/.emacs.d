@@ -10,7 +10,7 @@
 (use-package yapfify
   :ensure t
   :config
-  (print "Configuring YAPF")
+  ;;(print "Configuring YAPF")
   :hook
   (python-mode . yapf-mode))
 
