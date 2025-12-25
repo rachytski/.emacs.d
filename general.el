@@ -19,26 +19,9 @@
   :ensure t
   :config (which-key-mode))
 
-(setq normal-erase-is-backspace-mode 1)
-; C-h adds less wrist strain than backspace.
-(global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "C-?") 'help-command)
-
-;; No startup screen, go straight to the point
-(setq inhibit-startup-screen t)
-(cua-mode t)
-
-;; Switching off parts of interface for lean-and-clean look 
-;(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(show-paren-mode t)
-
 ;; zygospore package is a lifesaver!
 (use-package zygospore
   :ensure t
   :bind(("C-x 1" . 'zygospore-toggle-delete-other-windows))
   )
 
-; make compilation buffer to follow-scrolling output until error occures
-(setq compilation-scroll-output 'first-error)
