@@ -1,49 +1,22 @@
-(defun rachytski-find-project-root (name)
-  (progn
-  (message (format "figuring projectile project root for '%s'" name))
-  (let* ((project-root (seq-find (lambda (elem) (string-suffix-p (concat name "/") elem)) projectile-known-projects)))
-    (progn (message (format "found projectile project root '%s'" project-root))
-	   project-root))
-  ))
+(defun custom/hide-treemacs ()
+  (let* ((elapsed (benchmark-elapse 
+                 (delete-window (treemacs-get-local-window)))))
+       (message "persp-before-switch-hook: hiding treemacs took '%f' seconds" elapsed))
+  )
 
-(defun rachytski-hide-treemacs () (delete-window (treemacs-get-local-window)))
-
-(defun rachytski-show-single-project (project-root name)
-  (progn
-    (message "persp-switch-hook: making treemacs show project '%s' with root '%s'" name project-root)
-    (treemacs--show-single-project project-root name)))
-
+(defun custom/show-single-project (project-root name)
+  (let* ((elapsed (benchmark-elapse
+                 (treemacs--show-single-project project-root name))))
+       (message "persp-switch-hook: making treemacs show project '%s' with root '%s' took '%f' seconds" name project-root elapsed))
+  )
 
 (use-package treemacs
   :ensure t
-  :requires
-  (perspective projectile)
   :config
-  (add-hook 'projectile-after-switch-project-hook
-	    (lambda ()
-	      (progn
-		(message "before displaying exclusively")
-		(treemacs-display-current-project-exclusively)
-		(message "projectile-after-switch-project-hook"))
-	      )
-	    )
   (treemacs-follow-mode)
-  (setq perspectives-loaded nil)
-  (add-hook 'persp-before-switch-hook
-	    (lambda () (if perspectives-loaded (progn (message "persp-before-switch-hook: hiding treemacs")(rachytski-hide-treemacs)))))
-  (add-hook 'persp-switch-hook
-	    (lambda () (let* ((name (persp-current-name))
-			      (project-root (rachytski-find-project-root name)))
-			 (if perspectives-loaded
-			     (if project-root
-				 (rachytski-show-single-project (expand-file-name project-root) name)
-			       (message (format "persp-switch-hook: no project root for '%s'" name)))
-			     (message "persp-switch-hook: inside perspectives loading code")
-			   ))
-	      )
-	    )
   :custom
-  (treemacs-persist-file (expand-file-name "treemacs-persist" user-cache-dir))
+  (treemacs-persist-file (user-cache-path "treemacs-persist"))
+  (treemacs-last-error-persist-file (user-cache-path "treemacs-persist-at-last-error"))
   )
 
 (use-package treemacs-projectile
@@ -52,6 +25,15 @@
   (projectile treemacs)
   :init
   (require 'treemacs-projectile)
+  :hook
+  (projectile-after-switch-project .
+	    (lambda ()
+	      (progn
+		      (message "displaying project exclusively took '%f' seconds" (benchmark-elapse
+		      (treemacs-display-current-project-exclusively)))
+		      (message "projectile-after-switch-project-hook"))
+	      )
+	    )
   )
 
 (use-package treemacs-perspective
@@ -60,4 +42,24 @@
   (perspective treemacs)
   :init
   (require 'treemacs-perspective)
+  :config
+  (treemacs-display-current-project-exclusively)
+  :hook
+  (persp-before-switch . (lambda () (if perspectives-loaded (custom/hide-treemacs))))
+  (persp-switch . (lambda ()
+                    (let* ((name (persp-current-name))
+			                     (project-root (custom/find-project-root name)))
+			                (if perspectives-loaded
+			                    (if project-root
+				                      (custom/show-single-project (expand-file-name project-root) name)
+			                      (message "persp-switch-hook: no project root for '%s' project" name))
+			                  (message "persp-switch-hook: inside perspectives loading code")
+			                  ))
+	                  )
+                )
+  (kill-emacs . (lambda ()
+	                (progn
+		                (custom/hide-treemacs)
+		                (persp-state-save))
+	                ))
   )
