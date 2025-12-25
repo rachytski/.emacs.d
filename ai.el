@@ -1,6 +1,6 @@
 (use-package gptel
   :ensure t
-  :requires treemacs
+  :requires projectile
   :bind (("C-x / /" . gptel)
 	 ("C-x / m" . gptel-menu)
 	 ("C-x RET" . gptel-send)) ; make it hydra
