@@ -1,2 +1,2 @@
-(setq elpamr-default-output-directory (expand-file-name "elpa-mirror" user-init-dir))
+(setq elpamr-default-output-directory (user-init-path "elpa-mirror"))
 (elpamr-create-mirror-for-installed)

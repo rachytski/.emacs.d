@@ -41,7 +41,9 @@
   (dap-auto-configure-mode)
   :custom
   (dap-breakpoints-file (user-cache-path ".dap-breakpoints"))
-  (dap-ui-repl-histtory-dir `user-cache-dir)
+  (dap-ui-repl-history-dir `user-cache-dir)
+  (dap-netcore-install-dir (user-cache-path "lsp/netcoredbg"))
+  ;;(dap-utils-extension-path (user-cache-path ""))
   )
 
 

@@ -24,6 +24,8 @@
   (setq gptel-backend gptel--my-gemini)
   (setf (alist-get 'default gptel-directives) #'default-system-directive-fn)
   (setq gptel--system-message 'default-system-directive-fn)
+  (setq gptel-gh-github-token-file (user-cache-path "copilot-chat/github-token"))
+  (setq gptel-gh-token-file (user-cache-path "copilot-chat/token"))
   (cline-setup-tools)
   :custom
   (gptel-log-level 'debug)

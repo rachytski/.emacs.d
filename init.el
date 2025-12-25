@@ -1,14 +1,16 @@
-
 (defconst user-init-dir
   (cond ((boundp 'user-emacs-directory) user-emacs-directory)
         (t "~/.emacs.d/")))
 
-(defun load-user-file (file)
+(defun user-init-path (subpath) (expand-file-name subpath user-init-dir))
+
+(defmacro load-user-file (file)
   (interactive "f")
   "Load a file in current user's configuration directory"
-  (load-file (expand-file-name file user-init-dir)))
+  (load-file (user-init-path file)))
 
-(setq custom-file (expand-file-name "custom.el" user-init-dir))
+
+(setq custom-file (user-init-path "custom.el"))
 
 (load-user-file "init-debugging.el")
 (load-user-file "platform.el")
