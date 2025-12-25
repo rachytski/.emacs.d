@@ -20,7 +20,7 @@
 (global-set-key (kbd "C-M-S-i") 'shrink-window)
 (global-set-key (kbd "C-M-S-k") 'enlarge-window)
 
-;;(defun rachytski-compilation-layout-hook ()
+;;(defun custom/compilation-layout-hook ()
 ;;  (when (not (get-buffer-window "*compilation*"))
 ;;    (save-selected-window
 ;;      (save-excursion
@@ -29,11 +29,11 @@
 ;;          (select-window wnd)
 ;;          (switch-to-buffer "*compilation*")
 ;;          (shrink-window (- h compilation-window-height)))))))
-;;(add-hook 'compilation-mode-hook 'rachytski-compilation-layout-hook)
+;;(add-hook 'compilation-mode-hook 'custom/compilation-layout-hook)
 
 (setq eshell-window-height 20)
 
-(defun rachytski-eshell-layout-hook ()
+(defun custom/eshell-layout-hook ()
   (when (not (get-buffer-window "*eshell*"))
     (save-selected-window
       (save-excursion
@@ -42,7 +42,7 @@
           (select-window wnd)
           (switch-to-buffer "*eshell*")
           (shrink-window (- h eshell-window-height)))))))
-(add-hook 'eshell-mode-hook 'rachytski-eshell-layout-hook)
+(add-hook 'eshell-mode-hook 'custom/eshell-layout-hook)
 
 (use-package window-purpose
   :ensure t

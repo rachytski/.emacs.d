@@ -13,14 +13,14 @@
   )
 
 (defun write-to-file-tool-fn (path content)
-  (let* ((full-path (concat (rachytski-current-project-root) path)))
+  (let* ((full-path (concat (custom/current-project-root) path)))
     (progn
-      (message (format "tool:write_to_file: path=%S content=%S" full-path content))
+      (message "tool:write_to_file: path=%S content=%S" full-path content)
       (write-to-file full-path content)
       )))
 
 (defun get-diffs (diff &optional debug)
-  (if debug (message format( "DIFF: %S, len=%d" diff (length diff))))  
+  (if debug (message "DIFF: %S, len=%d" diff (length diff)))  
   (with-temp-buffer
     (insert diff)
     (goto-char (point-min))    
@@ -39,7 +39,7 @@
 		      (finished (eq replace-pos max-pos)))
 		 (if has-match
 		     (progn
-		       (if debug (message (format "has-match=%s finished=%s max-pos=%d search-pos=%d, separator-pos=%d, replace-pos=%d, search-str=%s, replace-str=%s" has-match finished max-pos search-pos separator-pos replace-pos search-str replace-str)))
+		       (if debug (message "has-match=%s finished=%s max-pos=%d search-pos=%d, separator-pos=%d, replace-pos=%d, search-str=%s, replace-str=%s" has-match finished max-pos search-pos separator-pos replace-pos search-str replace-str))
 		       (setq result (append result (list (list search-str replace-str))))))
 		 (not finished)
 	       )
@@ -48,7 +48,7 @@
       )))
 
 (defun replace-in-file-tool-fn (path diff)
-  (let* ((full-path (concat rachytski-current-project-root path)))
+  (let* ((full-path (concat custom/current-project-root path)))
     (progn
       (replace-in-file full-path diff)
       )))
@@ -62,7 +62,7 @@
       (dolist (cur-diff diffs)
 	(let* ((search-str (car cur-diff))
 	       (replace-str (car (cdr cur-diff))))
-	  (if debug (message (format "search=%S, replace=%S" search-str replace-str)))
+	  (if debug (message "search=%S, replace=%S" search-str replace-str))
 	  (search-forward search-str nil "smth")
 	  (replace-match replace-str)
 	  )
@@ -73,7 +73,7 @@
 (defun execute-command (command &optional debug)
   (progn
     (with-temp-buffer
-      (let ((default-directory (rachytski-current-project-root))
+      (let ((default-directory (custom/current-project-root))
 	    (exit-code (call-process-shell-command command nil (current-buffer) nil)))
 ;;;     (format "EXITCODE: %d, OUTPUT=%S" exit-code (buffer-string))))))
 	(buffer-string)
@@ -92,15 +92,15 @@
       (format "execution of command %S not approved" command))))
 
 (defun read-file-tool-fn (path &optional debug)
-  (let* ((full-path (concat (rachytski-current-project-root) path)))  
+  (let* ((full-path (concat (custom/current-project-root) path)))  
     (progn
-    (if debug (message (format "tool:read_file path=%S" full-path)))
+    (if debug (message "tool:read_file path=%S" full-path))
     (read-file full-path)
     )))
 
 (defun execute-command-tool-fn (command requires_approval &optional debug)
   (progn
-    (if debug (message (format "tool:execute_command: command=%S requires_approval=%s" command requires_approval)))
+    (if debug (message "tool:execute_command: command=%S requires_approval=%s" command requires_approval))
     (execute-command-if-approved command requires_approval debug)
     )
   )
@@ -126,7 +126,7 @@ The JSON-STRING is parsed, and if it's an array of strings,
 
 (defun attempt-completion-tool-fn (result command &optional debug)
   (progn
-    (if debug (message (format "tool:attempt_completion result=%S, command=%S" result command)))
+    (if debug (message "tool:attempt_completion result=%S, command=%S" result command))
     (if command (execute-command-if-approved command :json-false))
     (if (eq (yes-or-no-p "Complete the task?") t)
 	nil ;;"Thank you, the task is completed now. Stop our interaction."
@@ -134,25 +134,25 @@ The JSON-STRING is parsed, and if it's an array of strings,
     ))
 
 (defun new-task-tool-fn (context &optional debug)
-  (if debug (message (format "tool:not_implemented:new_task context=%S" context)))
+  (if debug (message "tool:not_implemented:new_task context=%S" context))
   nil)
 
 (defun plan-mode-respond-tool-fn (response &optional debug)
-  (if debug (message (format "tool:not_implemented:plan_mode_respond response=%S" response)))
+  (if debug (message "tool:not_implemented:plan_mode_respond response=%S" response))
   nil)
 
 (defun load-mcp-documentation-tool-fn (&optional debug) 
-  (if debug (message (format "tool:not_implemented:load_mcp_documentation")))
+  (if debug (message "tool:not_implemented:load_mcp_documentation"))
   nil)
 
-(defun rachytski-current-project-root ()
-  (rachytski-find-project-root (persp-current-name)))
+(defun custom/current-project-root ()
+  (custom/find-project-root (persp-current-name)))
 
 (defun default-system-directive-fn ()
   "Default System Directive Generator"
   (let* ((cpn (persp-current-name))
-	 (cpr (rachytski-find-project-root cpn)))
-    (format-spec (read-file (expand-file-name "cline-prompt.json" user-init-dir))
+	 (cpr (custom/find-project-root cpn)))
+    (format-spec (read-file (user-init-path "cline-prompt.json"))
 		 `((?r . ,cpr)
 		   (?o . user-os-name)
 		   (?s . user-shell)
@@ -160,49 +160,49 @@ The JSON-STRING is parsed, and if it's an array of strings,
   )
 
 (defun search-files-tool-fn (path regex file_pattern &optional debug)
-  (let* ((full-path (concat (rachytski-current-project-root) path)))
+  (let* ((full-path (concat (custom/current-project-root) path)))
     (progn
-      (if debug (message (format "tool:not_implemented:search_files: path=%S regex=%S file_pattern=%S" full-path regex file_pattern)))
+      (if debug (message "tool:not_implemented:search_files: path=%S regex=%S file_pattern=%S" full-path regex file_pattern))
       nil
       )))
 
 (defun list-files-tool-fn (path recursive &optional debug)
-  (let* ((full-path (concat (rachytski-current-project-root) path)))
+  (let* ((full-path (concat (custom/current-project-root) path)))
     (progn
-      (if debug (message (format "tool:list_files path=%S, recursive=%s" full-path recursive)))
+      (if debug (message "tool:list_files path=%S, recursive=%s" full-path recursive))
       (if (eq recursive :json-false)
 	  (mapconcat #'identity (directory-files-recursively full-path ".*" t '(lambda (dirname) nil)) "\n")
 	(mapconcat #'identity (directory-files-recursively full-path ".*" t) "\n")
 	))))
 
 (defun list-code-definition-names-tool-fn (path &optional debug)
-  (let* ((full-path (concat (rachytski-current-project-root) path)))
+  (let* ((full-path (concat (custom/current-project-root) path)))
     (progn
-      (if debug (message (format "tool:not_implemented:list_code_definition_names: path=%S" full-path)))
+      (if debug (message "tool:not_implemented:list_code_definition_names: path=%S" full-path))
       nil
       )))
 
 (defun browser-action-tool-fn (action url coordinate text &optional debug)
   (progn
-    (if debug (message (format "tool:not_implemented:browser_action: action=%s url=%S coordinate=%S text=%S" action url coordinate text)))
+    (if debug (message "tool:not_implemented:browser_action: action=%s url=%S coordinate=%S text=%S" action url coordinate text))
     nil
     ))
 
 (defun use-mcp-tool-tool-fn (server_name tool_name arguments &optional debug)
   (progn
-    (if debug (message (format "tool:not_implemented:use_mcp_tool: server_name=%S, tool_name=%S, arguments=%S" server_name tool_name arguments)))
+    (if debug (message "tool:not_implemented:use_mcp_tool: server_name=%S, tool_name=%S, arguments=%S" server_name tool_name arguments))
     nil
     ))
 
 (defun access-mcp-resource-tool-fn (server_name url &optional debug)
   (progn
-    (if debug (message (format "tool:not_implemented:access_mcp_resource: server_name=%S, uri=%S" server_name uri)))
+    (if debug (message "tool:not_implemented:access_mcp_resource: server_name=%S, uri=%S" server_name uri))
     nil
     ))
 
 (defun ask-followup-question-tool-fn (question options &optional debug)
   (progn
-    (if debug (message (format "tool:ask_followup_question: question=%S options=%S" question options)))
+    (if debug (message "tool:ask_followup_question: question=%S options=%S" question options))
     (if (eq options nil)
 	(read-from-minibuffer (concat question "\n"))
       (select-from-json-array question options)

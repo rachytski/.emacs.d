@@ -33,7 +33,7 @@
   (setq dap-codelldb-extension-version "1.11.4")
   (setq dap-codelldb-download-url
 	(format "https://github.com/vadimcn/codelldb/releases/download/v%s/codelldb-linux-x64.vsix" dap-codelldb-extension-version))
-  (message (format "Downloaded %s\n" dap-codelldb-download-url))
+  (message "Downloaded %s\n" dap-codelldb-download-url)
   ;; (setq dap-label-output-buffer-category t)
   (print "Configuring DAP-PYTHON")
   (setq dap-python-debugger 'debugpy)
