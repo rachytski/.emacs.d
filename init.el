@@ -40,6 +40,7 @@
 (benchmark-load-user-file "ivy.el")
 
 (benchmark-load-user-file "projectile.el")
+(benchmark-load-user-file "codesearch.el")
 (benchmark-load-user-file "perspective.el")
 (benchmark-load-user-file "treemacs.el")
 (benchmark-load-user-file "magit.el")

@@ -1,24 +1,3 @@
-
-;; prioritizing codesearch over rg is .csearchindex is present in some parent directory
-(defun counsel-codesearch-or-rg ()
-  (interactive)
-  (if (codesearch--find-dominant-csearchindex default-directory)
-      (counsel-codesearch)
-    (counsel-rg))
-  )
-
-;; as counsel-codesearch run async process to get results ivy--occur-default wouldn't do.
-;; we should provide our own function which will produce occur results
-(defun counsel-codesearch-occur (&optional _cands)
-  "Generate a custom occur buffer for counsel-codesearch."
-  (counsel-grep-like-occur counsel-codesearch-command))
-
-(use-package counsel-codesearch
-  :ensure t
-  :init
-  (ivy-set-occur 'counsel-codesearch 'counsel-codesearch-occur)
-)
-
 ;; Ivy, Counsel and Swiper are parts os the same repo, closely working together
 ;; Ivy is also used as a completion system backend for projectile
 
