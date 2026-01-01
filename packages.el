@@ -11,19 +11,20 @@
 
 (setq use-package-compute-statistics t)
 
-;;(setq do-update-local-mirror t)
+;;(setq do-update-packages t)
 
-(if (boundp 'do-update-local-mirror)
+(if (boundp 'do-update-packages)
     (progn
       (message "Using remote ELPA archives")
-      (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-      (add-to-list 'package-archives '("cselpa" . "https://elpa.thecybershadow.net/packages/"))
-      )
-    (progn
-      (message "Using local ELPA archives")
-      (setq package-archives `(("elpa-mirror" . ,(user-init-path "elpa-mirror"))))
-      )
-  )
+      (add-to-list
+       'package-archives '("melpa" . "https://melpa.org/packages/"))
+      (add-to-list
+       'package-archives
+       '("cselpa" . "https://elpa.thecybershadow.net/packages/")))
+  (progn
+    (message "Using local ELPA archives")
+    (setq package-archives
+          `(("elpa-mirror" . ,(user-init-path "elpa-mirror"))))))
 
 (print "Enabled ELPA archives:")
 (print package-archives)
@@ -38,9 +39,17 @@
   "crucial packages to run the rest of configuration")
 
 (defun personal-packages-installed-p ()
-  (cl-loop for pkg in personal-selected-packages
-        when (not (package-installed-p pkg)) do (cl-return nil)
-        finally (cl-return t)))
+  (cl-loop
+   for
+   pkg
+   in
+   personal-selected-packages
+   when
+   (not (package-installed-p pkg))
+   do
+   (cl-return nil)
+   finally
+   (cl-return t)))
 
 (unless (personal-packages-installed-p)
   (message "%s" "refreshing package database...")

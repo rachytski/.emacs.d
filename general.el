@@ -1,7 +1,6 @@
 ;; Allows emacs to inherit parent shell environment,
 ;; instead of using system-wide ones
-(use-package exec-path-from-shell
-  :ensure t)
+(use-package exec-path-from-shell :ensure t)
 
 ;; Allows mission-control-like switching between emacs buffers
 ;; Initiate with Ctrl-Tab, continue switching with Tab.
@@ -15,13 +14,10 @@
 
 ;; Shows completion for the currently entered partial key
 ;; https://github.com/justbur/emacs-which-key
-(use-package which-key
-  :ensure t
-  :config (which-key-mode))
+(use-package which-key :ensure t :config (which-key-mode))
 
 ;; zygospore package is a lifesaver!
-(use-package zygospore
-  :ensure t
-  :bind(("C-x 1" . 'zygospore-toggle-delete-other-windows))
-  )
-
+(use-package
+ zygospore
+ :ensure t
+ :bind (("C-x 1" . 'zygospore-toggle-delete-other-windows)))

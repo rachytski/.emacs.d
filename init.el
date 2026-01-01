@@ -1,8 +1,12 @@
 (defconst user-init-dir
-  (cond ((boundp 'user-emacs-directory) user-emacs-directory)
-        (t "~/.emacs.d/")))
+  (cond
+   ((boundp 'user-emacs-directory)
+    user-emacs-directory)
+   (t
+    "~/.emacs.d/")))
 
-(defun user-init-path (subpath) (expand-file-name subpath user-init-dir))
+(defun user-init-path (subpath)
+  (expand-file-name subpath user-init-dir))
 
 (defmacro load-user-file (file)
   (interactive "f")
@@ -13,20 +17,22 @@
   (interactive "f")
   "Benchmark loading a file in current user's configuration directory "
   (require 'benchmark)
-  (message "Loading '%s' took %f seconds" (user-init-path file) (benchmark-elapse (load-file (user-init-path file)))))
+  (message "Loading '%s' took %f seconds"
+           (user-init-path file)
+           (benchmark-elapse (load-file (user-init-path file)))))
 
 (setq custom-file (user-init-path "custom.el"))
 
 (load-user-file "platform.el")
 (load-user-file "caches.el")
 
-(load-user-file "packages.el") 
+(load-user-file "packages.el")
 (load-user-file "mirror.el")
 
 (load-user-file "benchmarks.el")
 (benchmark-load-user-file "emacs.el")
 (benchmark-load-user-file "keybindings.el")
-(benchmark-load-user-file "eshell.el" )
+(benchmark-load-user-file "eshell.el")
 (benchmark-load-user-file "general.el")
 (benchmark-load-user-file "layouts.el")
 
@@ -60,4 +66,3 @@
 
 (benchmark-load-user-file "colors.el")
 (benchmark-load-user-file "custom.el")
-

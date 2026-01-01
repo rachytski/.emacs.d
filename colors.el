@@ -6,19 +6,20 @@
 ;; On Windows, when using Terminal application, only
 ;; 16-colors palette is used, with few presets available in Settings.
 ;; Closest palette is HalfLight and NOT the Solarized-Light.
-(use-package solarized-theme :ensure t
-  :init
-  (load-theme `solarized-light t t)
-  ;; https://github.com/belluzj/fantasque-sans
-  ;; v1.8.0 is in fonts/ subfolder of this repo
-  (set-frame-font "Fantasque Sans Mono-16" nil t)
-  ;; Some other options taken from
-  ;;http://pragmaticemacs.com/emacs/fun-with-fonts/
-  ;;(set-frame-font "DejaVu Sans Mono-14" nil t)
-  ;;(set-frame-font "Source Code Pro-14" nil t)
-  ;;(set-frame-font "Monaco-14" nil t)
-  ;;(set-frame-font "Cousine-14" nil t)
-  )
+(use-package
+ solarized-theme
+ :ensure t
+ :init (load-theme `solarized-light t t)
+ ;; https://github.com/belluzj/fantasque-sans
+ ;; v1.8.0 is in fonts/ subfolder of this repo
+ (set-frame-font "Fantasque Sans Mono-16" nil t)
+ ;; Some other options taken from
+ ;;http://pragmaticemacs.com/emacs/fun-with-fonts/
+ ;;(set-frame-font "DejaVu Sans Mono-14" nil t)
+ ;;(set-frame-font "Source Code Pro-14" nil t)
+ ;;(set-frame-font "Monaco-14" nil t)
+ ;;(set-frame-font "Cousine-14" nil t)
+ )
 
 ; company's tooltip appearance customization to look better with solarized-light theme
 (custom-set-faces
@@ -30,4 +31,3 @@
  '(company-scrollbar-fg ((t (:background "ivory3"))))
  '(company-scrollbar-bg ((t (:background "ivory2"))))
  '(company-tooltip-annotation ((t (:foreground "MistyRose2")))))
-

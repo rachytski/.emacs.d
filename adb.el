@@ -14,40 +14,37 @@
 (defvar adb-process nil)
 
 (defmacro get-adb-buffer ()
-    (get-buffer-create adb-buffer-name))
+  (get-buffer-create adb-buffer-name))
 
 (defun append-adb-buffer (output)
   (with-current-buffer (get-adb-buffer)
     (insert output)))
 
 (defun start-adb-server-nodaemon (sentinel filter)
-  (setq adb-process (make-process
-   :name "adb"
-   :buffer (get-adb-buffer)
-   :command '("adb" "server" "-a" "nodaemon")
-   :sentinel sentinel
-   :filter filter
-   :noquery t)
-  ))
+  (setq adb-process
+        (make-process
+         :name "adb"
+         :buffer (get-adb-buffer)
+         :command '("adb" "server" "-a" "nodaemon")
+         :sentinel sentinel
+         :filter filter
+         :noquery t)))
 
 (defun filter-adb-output (process output)
-  (append-adb-buffer output)
-  )
+  (append-adb-buffer output))
 
 (defun kill-adb-server ()
-  (call-process-shell-command "adb kill-server")  
-  )
+  (call-process-shell-command "adb kill-server"))
 
 (defun handle-adb-event (process event)
   (let* ((ev (string-trim-right event)))
     (progn
-      (append-adb-buffer (format "Process '%s' received '%s' event\n" process ev))
+      (append-adb-buffer
+       (format "Process '%s' received '%s' event\n" process ev))
       (cond
-       ((equal ev "finished") (start-adb-server-nodaemon 'handle-adb-event 'filter-adb-output)))
-      )
-    )
-  )
+       ((equal ev "finished")
+        (start-adb-server-nodaemon
+         'handle-adb-event 'filter-adb-output))))))
 
 (kill-adb-server)
 (start-adb-server-nodaemon 'handle-adb-event 'filter-adb-output)
-adb-process

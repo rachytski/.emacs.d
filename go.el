@@ -6,10 +6,12 @@
 ;; 4. Install gopls following instructions from here:
 ;; https://github.com/golang/tools/blob/master/gopls/doc/user.md
 ;; Make sure gopls.exe is also on PATH
-(use-package go-mode
-  :ensure t
-  :hook((go-mode . (lambda () (require 'go-mode) (lsp)))))
-
-  
-
-
+(use-package
+ go-mode
+ :ensure t
+ :hook
+ ((go-mode
+   .
+   (lambda ()
+     (require 'go-mode)
+     (lsp)))))
