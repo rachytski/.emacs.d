@@ -5,21 +5,12 @@
 ;;; for processing to Emacs. Not all terminals support such customization of sending
 ;; custom escape sequences, refer to term-keys documentation to figure out which do.
 
-;;;(global-set-key (kbd "C-M-n") 'scroll-up)
-;;;(global-set-key (kbd "C-M-p") 'scroll-down) 
+(defun custom/write-xterm-config ()
+  (require 'term-keys-xterm)
+  (with-temp-buffer
+    (insert (term-keys/xterm-xresources))
+    (append-to-file (point-min) (point-max) "~/.Xresources")))
 
-(global-set-key (kbd "C-M-n") 'scroll-up)
-(global-set-key (kbd "C-M-p") 'scroll-down)
-
-;;(global-set-key (kbd "M-m") 'toggle-frame-maximized)
-
-;;(global-set-key (kbd "C-<tab>") `next-buffer)
-
-; remove annoying behaviour of destroying windows layout on triple-ESC 
-(defadvice keyboard-escape-quit
-  (around keyboard-escape-quit-dont-close-windows activate)
-  (let ((buffer-quit-function (lambda () ())))
-    ad-do-it))
 (use-package
  term-keys
  :ensure t

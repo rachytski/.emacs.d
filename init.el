@@ -37,8 +37,6 @@
 (benchmark-load-user-file "layouts.el")
 
 (benchmark-load-user-file "avy.el")
-(benchmark-load-user-file "ag.el")
-(benchmark-load-user-file "rg.el")
 (benchmark-load-user-file "ivy.el")
 
 (benchmark-load-user-file "projectile.el")
