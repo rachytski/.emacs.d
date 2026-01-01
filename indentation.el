@@ -10,3 +10,11 @@
   )
 
 
+(use-package
+ elisp-autofmt
+ :ensure t
+ :hook (emacs-lisp-mode . elisp-autofmt-mode)
+ :init
+ (setq elisp-autofmt-cache-directory
+       `,(user-cache-path "elisp-autofmt-cache"))
+ :config (setf elisp-autofmt-on-save-p (lambda () 'always)))
